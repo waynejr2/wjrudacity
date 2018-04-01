@@ -1,0 +1,5 @@
+
+
+var fn = function(a, b) {
+    log(this);
+};

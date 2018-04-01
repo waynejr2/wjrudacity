@@ -1,0 +1,40 @@
+expectations for add()
+Expect add(2, 3) = 5		    //passed
+Expect Error for non-numbers	//failed
+Expect add(0.1, 0.2) = 0.3	//failed
+
+function add(x, y) {
+    return x + y;
+}
+
+
+Change:
+
+function add(x, y ) {
+    if ((typeof x && typeof y) !==  'number') {
+        throw new Error("Params must be a number.");
+    }
+    
+    return x + y;
+}
+
+We now pass the first and second test but not the third.
+
+function add(x, y ) {
+    var result;
+    if ((typeof x && typeof y) !==  'number') {
+        throw new Error("Params must be a number.");
+    }
+    
+    result = x + y;
+    if (parseInt(result) != result) {
+        result = parseFloat(result.toFixed(1));
+    }
+    
+    return result;
+}
+
+we now pass all three tests
+
+
+

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+</head>
+<body>
+    <canvas id="c" width="200" height="200"></canvas>
+    <script>
+        var c = document.querySelector("#c");
+        var ctx = c.getContext("2d");
+        
+        //ctx.strokeRect(50,50,50,50);
+        //ctx.beginPath();
+        //ctx.moveTo(50, 75);
+        //ctx.lineTo(75,50);
+        //ctx.moveTo(50,100 );
+        //ctx.lineTo(100,50);
+        //ctx.stroke();
+        
+        function drawFancyBox(x, y, size) {
+            ctx.strokeRect(x, y, size, size);
+            ctx.moveTo(50, 57);
+            ctx.lineTo(57, 50);
+            ctx.moveTo(50, 64);
+            ctx.lineTo(64, 50);
+            ctx.moveTo(50, 70);
+            ctx.lineTo(70, 50);
+            ctx.moveTo(57, 70);
+            ctx.lineTo(70, 57);
+            ctx.moveTo(64, 70);
+            ctx.lineTo(70, 64);
+            ctx.stroke();
+        }
+        
+        drawFancyBox(50, 50, 20);
+        
+        function drawFancyBox2(x, y, size, direction) {
+            var maxX = x + size;
+            var maxY = y + size;
+            
+            ctx.strokeRect(x, y, size, size);
+            
+            var maxLines = 5;
+            var lines = [];
+            
+            for (var countLines=0, lineX=x, lineY=y; 
+                     countLines <= maxLines; 
+                     countLines++){
+                
+                console.log(countLines, direction, lines);
+                
+            }
+        
+            ////ctx.strokeRect(x, y, size, size);
+            /*
+            ctx.moveTo(50, 57);
+            ctx.lineTo(57, 50);
+            ctx.moveTo(50, 64);
+            ctx.lineTo(64, 50);
+            ctx.moveTo(50, 70);
+            ctx.lineTo(70, 50);
+            ctx.moveTo(57, 70);
+            ctx.lineTo(70, 57);
+            ctx.moveTo(64, 70);
+            ctx.lineTo(70, 64);
+            */
+            
+            ctx.stroke();
+        }
+        
+        drawFancyBox2(75, 75, 20, "right");
+        drawFancyBox2(75, 100, 20, "left");
+        
+    </script>
+</body>
+</html>

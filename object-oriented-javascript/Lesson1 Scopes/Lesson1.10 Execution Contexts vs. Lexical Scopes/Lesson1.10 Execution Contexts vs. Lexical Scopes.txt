@@ -1,0 +1,5 @@
+Execution Context:  AKA In-Memory-Scope
+
+Different from lexical scopes in that they are built as the code runs not as its typed. 
+
+There are rules which govern which variables a program has access to at during the execution.

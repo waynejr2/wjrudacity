@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<meta charset="utf-8">
+<head>
+</head>
+<body>
+    <canvas id="canvas" width="500" height="500"></canvas>
+    <script>
+        var canvas = document.querySelector("#canvas");
+        var ctx = canvas.getContext("2d");
+        
+        var image = new Image();
+        
+        image.onload = function() {
+            //console.log("image loaded");
+            ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+            var data = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            grayScale(data);
+        }
+        
+        image.src = "fry.jpg";
+        
+        
+        
+        function grayScale(imageData) {
+            var llog = false;
+            var numPixels = imageData.data.length / 4;
+            var gray, red, green, blue = 0;
+            for (var i = 0; i < numPixels; i++) {
+                red = imageData.data[ i * 4 + 0 ]; 
+                green = imageData.data[ i * 4 + 1 ];
+                blue = imageData.data[ i * 4 + 2 ];
+                gray = ( red + green + blue ) /3;
+                
+                if (  ! llog ) {
+                    console.log(red, green, blue, gray);
+                    llog = true;
+                }
+                
+                imageData.data[i * 4 + 0 ] = gray;
+                imageData.data[i * 4 + 1 ] = gray;
+                imageData.data[i * 4 + 2 ] = gray;
+                imageData.data[i * 4 + 3 ] = 255;
+                
+            }
+            ctx.putImageData(imageData, 0, 0);
+        };
+        
+
+        
+    </script>
+</body>
+</html>
